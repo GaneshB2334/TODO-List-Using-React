@@ -81,9 +81,9 @@ function App() {
         <button disabled={todo.length == 0} className="m-2 bg-purple-400 px-5 py-2 rounded-md disabled:bg-purple-200" onClick={handleAdd}>Add</button>
       </div>
 
-      <div className='flex items-center w-[70vw] m-auto flex-wrap font-bold h-[75vh] overflow-y-scroll'>
+      <div className='flex w-[70vw] m-auto flex-wrap font-bold max-h-[75vh] overflow-y-scroll'>
         {todos.map((item) => {
-          return <div key={item.id} className='w-[70vw] m-auto flex gap-3 my-3 items-center bg-purple-500 py-2 px-2 rounded-md'>
+          return <div key={item.id} className='w-[70vw] m-auto h-[75px] flex gap-3 my-3 items-center bg-purple-500 py-2 px-2 rounded-md'>
             <img
               className='cursor-pointer'
               src={item.isChecked ? checked : unchecked}
