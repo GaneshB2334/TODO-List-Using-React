@@ -83,9 +83,9 @@ function App() {
         <button disabled={todo.length == 0} className="m-2 bg-purple-400 px-5 py-2 rounded-md disabled:bg-purple-200" onClick={handleAdd}>Add</button>
       </div>
 
-      <div className='flex w-[70vw] m-auto flex-wrap font-bold max-h-[75vh] overflow-y-scroll'>
+      <div className='flex w-[70vw] m-auto flex-wrap font-bold max-h-[75vh] overflow-y-scroll max-md:w-[90vw] overflow-x-hidden overflow-ellipsis'>
         {todos.map((item) => {
-          return <div key={item.id} className='w-[70vw] m-auto min-h-[75px] max-md:h-[50px] flex gap-3 my-3 items-center bg-purple-500 py-2 px-2 rounded-md max-md:text-sm'>
+          return <div key={item.id} className='w-[70vw] m-auto min-h-[75px] h-auto max-md:h-auto flex gap-3 my-3 items-center bg-purple-500 py-2 px-2 rounded-md max-md:text-lg max-md:w-[90vw]'>
             <img
               className='cursor-pointer'
               src={item.isChecked ? checked : unchecked}
@@ -94,36 +94,39 @@ function App() {
 
             <li
               ref={EditingId === item.id ? inputRef : null}
-              className='w-[50vw]'
+              className='w-[50vw] p-2 max-h-full max-md:w-[70vw] border-2 border-gray-400 rounded-md'
               contentEditable={item.isEditable}
               style={{ color: item.isChecked ? "gray" : "inherit", textDecoration: item.isChecked ? "line-through" : "" }}
               onBlur={() => { handleEdit(item.id) }}
             >{item.todo}
             </li>
-            {window.innerWidth >= 850 ?
-              (<button
-                className="m-2 bg-purple-400 px-5 py-2 rounded-md h-[40px]"
-                onClick={() => { handleEdit(item.id) }}>
-                Edit</button>)
-              :
-              (<button
-                className="m-2 bg-purple-400 p-3 rounded-md h-[30px] flex items-center"
-                onClick={() => { handleEdit(item.id) }}>
-                <img src={EditIcon} alt="" /></button>
-              )}
+            <div className='flex max-md:flex-wrap justify-evenly w-[15vw] max-md:w-[10vw]'>
+
+              {window.innerWidth >= 850 ?
+                (<button
+                  className="m-2 bg-purple-400 px-5 py-2 rounded-md h-[40px]"
+                  onClick={() => { handleEdit(item.id) }}>
+                  Edit</button>)
+                :
+                (<button
+                  className="m-2 bg-transparent  rounded-md h-[30px] flex items-center"
+                  onClick={() => { handleEdit(item.id) }}>
+                  <img src={EditIcon} alt="" /></button>
+                )}
 
 
-            {window.innerWidth >= 850 ?
-              (<button
-                className="m-2 bg-purple-400 px-5 py-2 rounded-md h-[40px]"
-                onClick={() => { handleDelete(item.id) }}>
-                Delete</button>)
-              :
-              (<button
-                className="m-2 bg-purple-400 p-3 rounded-md h-[30px] flex items-center"
-                onClick={() => { handleDelete(item.id) }}>
-                <img src={DeleteIcon} alt="" /></button>
-              )}
+              {window.innerWidth >= 850 ?
+                (<button
+                  className="m-2 bg-purple-400 px-5 py-2 rounded-md h-[40px]"
+                  onClick={() => { handleDelete(item.id) }}>
+                  Delete</button>)
+                :
+                (<button
+                  className="m-2 bg-transparent rounded-md h-[30px] flex items-center"
+                  onClick={() => { handleDelete(item.id) }}>
+                  <img src={DeleteIcon} alt="" /></button>
+                )}
+            </div>
 
           </div>
         })}
