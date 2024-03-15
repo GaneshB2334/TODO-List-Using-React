@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import unchecked from "./assets/unchecked.svg";
 import checked from "./assets/checked.svg";
+import EditIcon from "./assets/edit.svg"
+import DeleteIcon from "./assets/del.svg"
 import './App.css';
 
 function App() {
@@ -98,16 +100,30 @@ function App() {
               onBlur={() => { handleEdit(item.id) }}
             >{item.todo}
             </li>
+            {window.innerWidth >= 850 ?
+              (<button
+                className="m-2 bg-purple-400 px-5 py-2 rounded-md h-[40px]"
+                onClick={() => { handleEdit(item.id) }}>
+                Edit</button>)
+              :
+              (<button
+                className="m-2 bg-purple-400 px-5 py-2 rounded-md h-[40px]"
+                onClick={() => { handleEdit(item.id) }}>
+                <img src={EditIcon} alt="" /></button>
+              )}
 
-            <button
-              className="m-2 bg-purple-400 px-5 py-2 rounded-md h-[40px]"
-              onClick={() => { handleEdit(item.id) }}>
-              Edit</button>
 
-            <button
-              className="m-2 bg-purple-400 px-5 py-2 rounded-md h-[40px]"
-              onClick={() => { handleDelete(item.id) }}>
-              Delete</button>
+            {window.innerWidth >= 850 ?
+              (<button
+                className="m-2 bg-purple-400 px-5 py-2 rounded-md h-[40px]"
+                onClick={() => { handleDelete(item.id) }}>
+                Delete</button>)
+              :
+              (<button
+                className="m-2 bg-purple-400 px-5 py-2 rounded-md h-[40px]"
+                onClick={() => { handleDelete(item.id) }}>
+                <img src={DeleteIcon} alt="" /></button>
+              )}
 
           </div>
         })}
