@@ -85,7 +85,7 @@ function App() {
 
       <div className='flex w-[70vw] m-auto flex-wrap font-bold max-h-[75vh] overflow-y-scroll'>
         {todos.map((item) => {
-          return <div key={item.id} className='w-[70vw] m-auto h-[75px] max-md:h-[50px] flex gap-3 my-3 items-center bg-purple-500 py-2 px-2 rounded-md'>
+          return <div key={item.id} className='w-[70vw] m-auto min-h-[75px] max-md:h-[50px] flex gap-3 my-3 items-center bg-purple-500 py-2 px-2 rounded-md max-md:text-sm'>
             <img
               className='cursor-pointer'
               src={item.isChecked ? checked : unchecked}
