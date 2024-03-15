@@ -85,7 +85,7 @@ function App() {
 
       <div className='flex w-[70vw] m-auto flex-wrap font-bold max-h-[75vh] overflow-y-scroll'>
         {todos.map((item) => {
-          return <div key={item.id} className='w-[70vw] m-auto h-[75px] flex gap-3 my-3 items-center bg-purple-500 py-2 px-2 rounded-md'>
+          return <div key={item.id} className='w-[70vw] m-auto h-[75px] max-md:h-[50px] flex gap-3 my-3 items-center bg-purple-500 py-2 px-2 rounded-md'>
             <img
               className='cursor-pointer'
               src={item.isChecked ? checked : unchecked}
@@ -107,7 +107,7 @@ function App() {
                 Edit</button>)
               :
               (<button
-                className="m-2 bg-purple-400 px-5 py-2 rounded-md h-[40px]"
+                className="m-2 bg-purple-400 p-3 rounded-md h-[30px] flex items-center"
                 onClick={() => { handleEdit(item.id) }}>
                 <img src={EditIcon} alt="" /></button>
               )}
@@ -120,7 +120,7 @@ function App() {
                 Delete</button>)
               :
               (<button
-                className="m-2 bg-purple-400 px-5 py-2 rounded-md h-[40px]"
+                className="m-2 bg-purple-400 p-3 rounded-md h-[30px] flex items-center"
                 onClick={() => { handleDelete(item.id) }}>
                 <img src={DeleteIcon} alt="" /></button>
               )}

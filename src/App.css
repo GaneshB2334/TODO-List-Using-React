@@ -29,3 +29,9 @@ li{
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+@media only screen and (max-width:850px){
+  .main{
+    background-position: center;
+  }
+}
